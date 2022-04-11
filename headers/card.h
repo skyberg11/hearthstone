@@ -1,9 +1,4 @@
-//
-// Created by ztimu on 27.03.2022.
-//
-
-#ifndef PROJECT__CARD_H_
-#define PROJECT__CARD_H_
+#include <bits/stdc++.h>
 
 enum CardType {
     effect,
@@ -20,27 +15,46 @@ struct Target {
 };
 
 struct MonsterCard : Card {
+    size_t mana_cost;
     int life;
-    int attackHit;
+    size_t damage;
 
-    MonsterCard();
+    MonsterCard():
+        cardType(monster)
+    {}
 };
 
 struct EffectCard : Card {
     Target target;
 
-    EffectCard();
+    EffectCard():
+        cardType(effect)
+    {}
 };
 
-class Deck {
-    private:
+class Deck
+{
+    protected:
+
     vector<Card>deck;
 
+    Deck():
+    {
+        //Generation of Deck;
+    }
+
+    static Deck* deck_;
+
     public:
-    Deck();
+    Deck(Deck &other) = delete;
+    void operator=(const Deck &) = delete;
 
-    bool IsAvailable();
-    Card GetUpperCard();
+    bool IsAvailable() {
+        return deck_.empty();
+    }
+    Card GetUpperCard() {
+        Card tmp = deck_.back();
+        deck_.pop_back();
+        return tmp;
+    }
 };
-
-#endif //PROJECT__CARD_H_

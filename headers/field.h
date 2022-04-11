@@ -14,19 +14,9 @@ class Field {
     queue<Monster
 
     public:
-    void ExecuteEffects() {
-
-
-    }
-
-    void ExecuteMove() {
-        ExecuteEffects();
-        ExecuteMonsters();
-    }
-
+    void Builder();
     void StartGame() {
-        Deck deck;
-        Player first, second;
+        Field::Builder();
         WhosMove gameStatus = begin;
         while(IsGameEnd()) {
             Player& currentPlayer;

@@ -1,39 +1,43 @@
-//
-// Created by ztimu on 27.03.2022.
-//
 #include <vector>
 #include "effects.h"
 #include "card.h"
-#ifndef PROJECT__PLAYER_H_
-#define PROJECT__PLAYER_H_
 
-enum life : bool {
+enum life {
     alive = true,
-    dead = false;
+    dead = false
 };
 
 class Player {
     private:
     bool status;
     int life;
+    int damage;
+
     std::vector<Effect> effects;
     void CastCard(const Card& cast) {
 
     };
+
     class Hand {
         std::vector<Card> cards;
-        void push(const Card& card);
+        void push(const Card& card) {
+            cards.push_back(card);
+        }
     };
 
     public:
 
-    Player();
+    Player():
+        life(30),
+        effects(std::vector<Effect>()),
+        status(alive)
+    {}
 
     ~Player();
 
-    bool IsDead const;
+    bool IsDead const {
+        return status;
+    };
 
     void Move();
 };
-
-#endif //PROJECT__PLAYER_H_

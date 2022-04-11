@@ -3,4 +3,6 @@ project(project)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(project main.cpp)
+include_directories(headers)
+add_subdirectory(src)
+
