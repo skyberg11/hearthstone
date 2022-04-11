@@ -1,46 +1,35 @@
+#pragma once
+
+#include <bits/stdc++.h>
 #include "card.h"
 #include "effects.h"
 #include "player.h"
-#include <bits/stdc++.h>
+#include "ability.h"
 
-enum WhosMove {
-    first,
-    second,
-    begin
-};
+class Deck
+{
+    protected:
 
-class Field {
-    queue<Effect> effectsStack;
-    queue<Monster
+    vector<Card>deck;
+
+    Deck():
+    {
+        //Generation of Deck;
+    }
+
+    static Deck* deck_;
 
     public:
-    void Builder();
-    void StartGame() {
-        Field::Builder();
-        WhosMove gameStatus = begin;
-        while(IsGameEnd()) {
-            Player& currentPlayer;
-            switch(gameStatus) {
-                case begin:
-                    gameStatus = first;
-                    currentPlayer = first;
-                    break;
-                case first:
-                    gameStatus = second;
-                    currentPlayer = second;
-                    break;
-                default:
-                    gameStatus = first;
-                    currentPlayer = first;
-                    break;
-            }
-            currentPlayer::move();
-            ExecuteMove();
-        }
-    }
-    bool IsGameEnd() {
-        return first.isDead() || second.isDead();
-    }
+    Deck(Deck &other) = delete;
+    void operator=(const Deck &) = delete;
 
-
+    bool IsAvailable() {
+        return deck_.empty();
+    }
+    
+    Card GetUpperCard() {
+        Card tmp = deck_.back();
+        deck_.pop_back();
+        return tmp;
+    }
 };

@@ -1,43 +1,56 @@
-#include <vector>
-#include "effects.h"
-#include "card.h"
+#pragma once
 
-enum life {
+#include <bits/stdc++.h>
+#include "card.h"
+#include "effects.h"
+#include "field.h"
+#include "ability.h"
+
+enum Life {
     alive = true,
     dead = false
 };
 
+template<bool IsBot>
 class Player {
     private:
-    bool status;
-    int life;
-    int damage;
 
-    std::vector<Effect> effects;
-    void CastCard(const Card& cast) {
-
-    };
-
-    class Hand {
-        std::vector<Card> cards;
-        void push(const Card& card) {
+    struct Hand {
+        std::vector<Card*> cards;
+        void push(Card* card) {
             cards.push_back(card);
         }
     };
 
+    Life status;
+    int life;
+    int damage;
+
+    std::vector<Card*> laid_cards;
+
     public:
 
     Player():
-        life(30),
-        effects(std::vector<Effect>()),
-        status(alive)
+        // Generation of the Player;
     {}
-
-    ~Player();
 
     bool IsDead const {
         return status;
     };
 
-    void Move();
+    void Move() {
+        if(IsBot) {
+            // ??? Artificial Intelligence or some algo wtf ???
+            return;
+        } else {
+            std::tuple<Interface::Command, Args...> directive = Interface::GetDirective();
+            //Attack [card/hero] [executor] [target] - attacks a target by executor
+            //deploy [card] - deploys a card
+            //skill - use hero skill
+            //finish - end the move
+            if(directive[0] == attack) {
+                
+            } else if()
+        }
+    }
 };

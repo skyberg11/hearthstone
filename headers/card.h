@@ -1,4 +1,10 @@
+#pragma once
+
 #include <bits/stdc++.h>
+#include "effects.h"
+#include "player.h"
+#include "ability.h"
+#include "field.h"
 
 enum CardType {
     effect,
@@ -6,18 +12,19 @@ enum CardType {
 };
 
 struct Card {
-    CardType cardType;
+    CardType card_type;
 };
 
 struct Target {
-    player,
-    monster
+    std::vector<Player*> players;
+    std::vector<card*> cards;
 };
 
 struct MonsterCard : Card {
     size_t mana_cost;
     int life;
     size_t damage;
+    Ability ability;
 
     MonsterCard():
         cardType(monster)
@@ -25,36 +32,11 @@ struct MonsterCard : Card {
 };
 
 struct EffectCard : Card {
-    Target target;
+    size_t mana_cost;
+    Ability ability;
 
     EffectCard():
         cardType(effect)
     {}
 };
 
-class Deck
-{
-    protected:
-
-    vector<Card>deck;
-
-    Deck():
-    {
-        //Generation of Deck;
-    }
-
-    static Deck* deck_;
-
-    public:
-    Deck(Deck &other) = delete;
-    void operator=(const Deck &) = delete;
-
-    bool IsAvailable() {
-        return deck_.empty();
-    }
-    Card GetUpperCard() {
-        Card tmp = deck_.back();
-        deck_.pop_back();
-        return tmp;
-    }
-};

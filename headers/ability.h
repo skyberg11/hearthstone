@@ -1,16 +1,21 @@
-#include "card.h"
-#include "player.h"
+#pragma once
 
-struct Target {
-    vector<Player*> players;
-    vector<card*> cards;
-};
+#include <bits/stdc++.h>
+#include "card.h"
+#include "effects.h"
+#include "player.h"
+#include "field.h"
+
 
 struct Ability {
-    Target targets;
+    std::string name;
     int change_HP_on;
     int set_HP_on;
     int change_damage_on;
     int set_damage_on;
     int set_mana;
+
+    Ability() {
+        // Construction of Ability
+    }
 };
