@@ -1,5 +1,5 @@
 # Физтех.stone
-
+https://docs.google.com/document/d/1OFr1lBNB8nX5dye98dLrJ3lrF7pRCa6lxNqJlx9oYio
 ## TODO:
  * ~~Осознать основные механики~~
  * ~~Объявить тела некоторых функции и пространств имен~~
