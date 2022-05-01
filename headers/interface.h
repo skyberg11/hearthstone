@@ -8,7 +8,8 @@ namespace Interface {
     }
 
     std::tuple<Command, Args...> GetDirective() {
-        // implement move
+        std::tuple<Command, Args...> directive;
+        // implement
     }
 
 }

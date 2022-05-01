@@ -40,7 +40,7 @@ class Player {
 
     void Move() {
         if(IsBot) {
-            // ??? Artificial Intelligence or some algo wtf ???
+            // ??? Artificial Intelligence or some algo ???
             return;
         } else {
             std::tuple<Interface::Command, Args...> directive = Interface::GetDirective();
