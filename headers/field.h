@@ -6,18 +6,15 @@
 #include "player.h"
 #include "ability.h"
 
-class Deck
-{
+class Deck {
     protected:
 
-    vector<Card>deck;
+    vector<Card*>deck;
 
     Deck():
     {
         //Generation of Deck;
     }
-
-    static Deck* deck_;
 
     public:
     Deck(Deck &other) = delete;
@@ -27,6 +24,7 @@ class Deck
         return deck_.empty();
     }
     
+
     Card GetUpperCard() {
         Card tmp = deck_.back();
         deck_.pop_back();

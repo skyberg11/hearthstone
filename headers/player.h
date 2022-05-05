@@ -6,26 +6,34 @@
 #include "field.h"
 #include "ability.h"
 
-enum Life {
-    alive = true,
-    dead = false
-};
-
-template<bool IsBot>
 class Player {
     private:
 
     struct Hand {
         std::vector<Card*> cards;
+
         void push(Card* card) {
             cards.push_back(card);
         }
+
+        void RemoveCard(Card* card) {
+            for(auto it : deck) {
+                if(&(*it) == card) {
+                    deck.erase(it);
+                    break;
+                }
+            }
+        }
     };
 
-    Life status;
+    Hand hand;
+    std::string name;
     int life;
-    int damage;
+    size_t damage;
+    size_t mana;
 
+    friend Game;
+    
     std::vector<Card*> laid_cards;
 
     public:
@@ -35,22 +43,29 @@ class Player {
     {}
 
     bool IsDead const {
-        return status;
+        return life < 1;
     };
 
+    void DealDamage(auto* target) {
+        Game::ChangeHpON(target, -damage);
+    }
+
     void Move() {
-        if(IsBot) {
-            // ??? Artificial Intelligence or some algo ???
-            return;
+        std::pair<Interface::Command, 
+            std::tuple<Args...>> directive = Interface::GetDirective();
+        //Attack [executor*] [target*] - attacks a target by executor
+        //deploy [card*] - deploys a card
+        //finish - end the move
+        if(directive.first == Interface::Command.attack) {
+            directive.second[0].DealDamage(directive.second[1]);
+        } else if(directive.first == Interface::Command.deploy) {
+            mana -= directive.second[0].mana_cost;
+            laid_cards.push_back(directive.second[0]);
+            hand.RemoveCard(directive.second[0]);
+            directive.second[0]->ExecuteAbility();
         } else {
-            std::tuple<Interface::Command, Args...> directive = Interface::GetDirective();
-            //Attack [card/hero] [executor] [target] - attacks a target by executor
-            //deploy [card] - deploys a card
-            //skill - use hero skill
-            //finish - end the move
-            if(directive[0] == attack) {
-                
-            } else if()
+            return;
         }
+
     }
 };

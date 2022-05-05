@@ -1,7 +1,7 @@
  namespace Game {
      
-    void Builder() {
-
+    void Builder(Player& first, Player& second, Deck& deck) {
+        
 
     }
 
@@ -18,7 +18,10 @@
     }
 
     void StartGame() {
-        Builder();
+        static Player first;
+        static Player second;
+        static Deck deck;
+        Builder(first, second, deck);
         while(IsGameEnd()) {
             Player& current_player;
             switch(game_status) {
