@@ -54,8 +54,11 @@ class Player : public Mortal {
             directive.executor->DealDamage(directive.target);
             Move();
         } else if(directive.command == Interface::Command.deploy) {
-            mana -= reinterpret_cast<MonsterCard*>(directive.card)->mana_cost;
-            laid_cards.push_back(reinterpret_cast<MonsterCard*>(directive.card));
+            Card* card = reinterpret_cast<Card*>(directive.card)->mana_cost;
+            mana -= card->mana_cost;
+            if(card->card_type == CardType.monster) {
+                laid_cards.push_back(reinterpret_cast<MonsterCard*>(directive.card));
+            }
             hand.RemoveCard(reinterpret_cast<MonsterCard*>(directive.card));
             reinterpret_cast<MonsterCard*>(directive.card)->ExecuteAbility();
             Move();

@@ -12,7 +12,11 @@ enum CardType {
 };
 
 struct Card {
+    std::string name;
     CardType card_type;
+    size_t mana_cost;
+    Ability ability;
+
     friend Game;
 };
 
@@ -22,8 +26,6 @@ struct Target {
 };
 
 struct MonsterCard : public Card, public Mortal {
-    size_t mana_cost;
-    Ability ability;
 
     player* ally, opposite;
 
@@ -56,8 +58,6 @@ struct MonsterCard : public Card, public Mortal {
 };
 
 struct EffectCard : public Card {
-    size_t mana_cost;
-    Ability ability;
 
     EffectCard():
         cardType(effect)
