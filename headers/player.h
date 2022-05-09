@@ -6,9 +6,7 @@
 #include "field.h"
 #include "ability.h"
 
-class Player {
-    private:
-
+class Player : public Mortal {
     struct Hand {
         std::vector<Card*> cards;
 
@@ -26,17 +24,17 @@ class Player {
         }
     };
 
-    Hand hand;
+    
     std::string name;
-    int life;
-    size_t damage;
     size_t mana;
+    Player* opposite;
 
     friend Game;
-    
-    std::vector<Card*> laid_cards;
 
     public:
+
+    Hand hand;
+    std::vector<Card*> laid_cards;
 
     Player():
         // Generation of the Player;
@@ -46,26 +44,24 @@ class Player {
         return life < 1;
     };
 
-    void DealDamage(auto* target) {
-        Game::ChangeHpON(target, -damage);
-    }
-
     void Move() {
-        std::pair<Interface::Command, 
-            std::tuple<Args...>> directive = Interface::GetDirective();
+        Game::GarbageCollector();
+        Interface::Directive directive = Interface::GetDirective(this, opposite);
         //Attack [executor*] [target*] - attacks a target by executor
         //deploy [card*] - deploys a card
         //finish - end the move
-        if(directive.first == Interface::Command.attack) {
-            directive.second[0].DealDamage(directive.second[1]);
-        } else if(directive.first == Interface::Command.deploy) {
-            mana -= directive.second[0].mana_cost;
-            laid_cards.push_back(directive.second[0]);
-            hand.RemoveCard(directive.second[0]);
-            directive.second[0]->ExecuteAbility();
+        if(directive.command == Interface::command.attack) {
+            directive.executor->DealDamage(directive.target);
+            Move();
+        } else if(directive.command == Interface::Command.deploy) {
+            mana -= reinterpret_cast<MonsterCard*>(directive.card)->mana_cost;
+            laid_cards.push_back(reinterpret_cast<MonsterCard*>(directive.card));
+            hand.RemoveCard(reinterpret_cast<MonsterCard*>(directive.card));
+            reinterpret_cast<MonsterCard*>(directive.card)->ExecuteAbility();
+            Move();
         } else {
             return;
         }
-
+        
     }
 };

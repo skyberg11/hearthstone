@@ -21,10 +21,8 @@ struct Target {
     std::vector<Card*> cards;
 };
 
-struct MonsterCard : Card {
+struct MonsterCard : public Card, public Mortal {
     size_t mana_cost;
-    int life;
-    size_t damage;
     Ability ability;
 
     player* ally, opposite;
@@ -55,12 +53,9 @@ struct MonsterCard : Card {
         }
     }
 
-    void DealDamage(auto* target) {
-        Game::ChangeHpON(target, -damage);
-    }
 };
 
-struct EffectCard : Card {
+struct EffectCard : public Card {
     size_t mana_cost;
     Ability ability;
 
