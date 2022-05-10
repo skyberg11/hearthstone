@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4db2bde-6919-4030-9f62-09f3a0a5c2d1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +45,7 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/mipt/miptedu/project/hearthstone" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
     <property name="structure.view.defaults.are.configured" value="true" />
   </component>
@@ -131,6 +130,8 @@
       <workItem from="1649524619965" duration="601000" />
       <workItem from="1652121497046" duration="510000" />
       <workItem from="1652122079102" duration="77000" />
+      <workItem from="1652194949081" duration="252000" />
+      <workItem from="1652195261485" duration="24000" />
     </task>
     <servers />
   </component>
