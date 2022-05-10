@@ -20,6 +20,9 @@ Deck::Deck() {
         MonsterCard* card = new MonsterCard(card_name, card_mana, card_hp, card_dmg, ability);
         deck.push_back(reinterpret_cast<Card*>(card));
     }
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(deck.begin(), deck.end(), g);
     fclose(stdin);
 }
 

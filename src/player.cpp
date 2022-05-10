@@ -121,15 +121,19 @@ void Game::StartGame() {
     Deck deck;
     Player* current_player = &first;
     Player* next_player = &second; 
+    Interface::Echo("Welcome to Физтех.Stone.");
     while(IsGameEnd(&first, &second)) {
         switch(game_status) {
             case WhosMove::idle:
+                Interface::Echo("First player moves.");
                 game_status = WhosMove::first;
                 break;
             case WhosMove::first:
+                Interface::Echo("Second player moves.");
                 game_status = WhosMove::second;
                 break;
             default:
+                Interface::Echo("First player moves.");
                 game_status = WhosMove::first;
                 break;
         }
@@ -142,5 +146,13 @@ void Game::StartGame() {
         }
         Game::AddMana(current_player, 1);
         std::swap(current_player, next_player);
+    }
+    Interface::Echo("Game ended");
+    if(first.IsDead() && !second.IsDead()) {
+        Interface::Echo("Second player wins");
+    } else if(!first.IsDead() && second.IsDead()) {
+        Interface::Echo("First player wins");
+    } else {
+        Interface::Echo("Draw");
     }
 }
