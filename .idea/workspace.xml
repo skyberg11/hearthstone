@@ -12,27 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4db2bde-6919-4030-9f62-09f3a0a5c2d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ContestS2C2/E.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../contestS2C1/E.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/biginteger.h" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/biginteger.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/main.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/big.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/matrix.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/matrix.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/matrix.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/CMakeFiles/matrix.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/big.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/big.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/matrix.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/matrix.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/matrix.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/cmake-build-debug/matrix.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/matrix.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/matrix.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mesherin/matrix/matrix.h" beforeDir="false" afterPath="$PROJECT_DIR$/../mesherin/matrix/matrix.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +25,10 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="279kRN6KV7eJMBESHzijvjHN60S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -63,16 +47,23 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+    <property name="structure.view.defaults.are.configured" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project" TARGET_NAME="project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project" RUN_TARGET_NAME="project">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project" TARGET_NAME="project" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project" RUN_TARGET_NAME="project">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -138,10 +129,17 @@
       <workItem from="1649082853598" duration="5702000" />
       <workItem from="1649114654979" duration="33000" />
       <workItem from="1649524619965" duration="601000" />
+      <workItem from="1652121497046" duration="510000" />
+      <workItem from="1652122079102" duration="77000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
   </component>
 </project>

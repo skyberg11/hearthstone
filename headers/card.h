@@ -1,10 +1,8 @@
 #pragma once
 
 #include <bits/stdc++.h>
-#include "effects.h"
 #include "player.h"
 #include "ability.h"
-#include "field.h"
 
 enum CardType {
     effect,
@@ -16,51 +14,36 @@ struct Card {
     CardType card_type;
     size_t mana_cost;
     Ability ability;
+    
+    Card(std::string name, CardType ct, 
+    size_t mana_cost, Ability ability);
 
-    friend Game;
+    Card(std::string name, size_t mana_cost, int life, 
+        size_t damage, Ability ability);
+
+    friend void Game::ChangeHpON(Mortal* target, int value);
+    friend void Game::SetHpOn(Mortal* target, int value);
+    friend void Game::ChangeDamageOn(Mortal* target, int value);
+    friend void Game::SetDamageOn(Mortal* target, int value);
+    friend void Game::AddMana(Player* player, int value);
 };
 
-struct Target {
-    std::vector<Player*> players;
-    std::vector<Card*> cards;
-};
+class MonsterCard : public Card, public Mortal {
 
-struct MonsterCard : public Card, public Mortal {
+    Player* ally;
 
-    player* ally, opposite;
+    public:
+    MonsterCard(std::string name, size_t mana_cost, int life, 
+        size_t damage, Ability ability);
 
-    MonsterCard():
-        cardType(monster)
-    {
-        //
-    }
-
-    MonsterCard(std::string name, Player* ally, Player* opposite) 
-    {}
-
-    void ExecuteAbility {
-        if(ability.hero_friendly) {
-            Game.ChangeHpON(ally, ability.change_HP_on);
-            Game.ChangeDamageOn(ally, ability.change_damage_on);
-            Game.AddMana(ally, ability.add_mana);
-        }
-        if(ability.hero_bad) {
-            Game.ChangeHpON(opposite, ability.change_HP_on);
-            Game.ChangeDamageOn(opposite, ability.change_damage_on);
-            Game.AddMana(opposite, ability.add_mana);
-        }
-        for(auto name : ability.to_summon) {
-            Card* card = new Card(name, ally, opposite);
-            ally->laid_cards.push_back(card);
-        }
-    }
+    void ExecuteAbility();
 
 };
 
-struct EffectCard : public Card {
+// struct EffectCard : public Card {
 
-    EffectCard():
-        cardType(effect)
-    {}
-};
+//     EffectCard():
+//         cardType(effect)
+//     {}
+// };
 

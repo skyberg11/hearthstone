@@ -1,1 +1,1 @@
-add_executable(project main.cpp ability.cpp card.cpp effects.cpp player.cpp)
+add_executable(project ../main.cpp field.cpp ability.cpp card.cpp interface.cpp player.cpp)

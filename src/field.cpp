@@ -1,50 +1,34 @@
-#include "card.h"
-#include "effects.h"
-#include "player.h"
-#include <bits/stdc++.h>
+#pragma once
+
 #include "field.h"
 
-
-void Field::ExecuteEffects() {
-
-
-}
-
-void Field::ExecuteMove() {
-    ExecuteEffects();
-    ExecuteMonsters();
-}
-
-void Field::Builder() {
-
-
-
-}
-
-void Field::StartGame() {
-    Field::Builder();
-    WhosMove gameStatus = begin;
-    while(IsGameEnd()) {
-        Player& currentPlayer;
-        switch(gameStatus) {
-            case begin:
-                gameStatus = first;
-                currentPlayer = first;
-                break;
-            case first:
-                gameStatus = second;
-                currentPlayer = second;
-                break;
-            default:
-                gameStatus = first;
-                currentPlayer = first;
-                break;
-        }
-        currentPlayer::move();
-        ExecuteMove();
+Deck::Deck() {
+    freopen("../data/cards", "r", stdin);
+    while (!feof(stdin)) {
+        std::string card_name;
+        std::cin >> card_name;
+        int card_hp, card_mana, card_dmg;
+        std::cin >> card_mana >> card_hp >> card_dmg;
+        std::string ability_name;
+        std::cin >> ability_name;
+        int change_hp, change_damage;
+        size_t add_mana;
+        bool hero_friendly, hero_bad;
+        std::cin >> change_hp >> change_damage >> 
+        add_mana >> hero_friendly >> hero_bad;
+        Ability ability(ability_name, change_hp, change_damage, add_mana, hero_friendly, hero_bad);
+        MonsterCard* card = new MonsterCard(card_name, card_mana, card_hp, card_dmg, ability);
+        deck.push_back(reinterpret_cast<Card*>(card));
     }
+    fclose(stdin);
 }
 
-bool Field::IsGameEnd() {
-    return first.isDead() || second.isDead();
+bool Deck::IsAvailable() {
+    return deck.empty();
+}
+
+Card* Deck::GetUpperCard() {
+    Card* tmp = deck.back();
+    deck.pop_back();
+    return tmp;
 }

@@ -1,70 +1,95 @@
 #pragma once
 
 #include <bits/stdc++.h>
-#include "card.h"
-#include "effects.h"
-#include "field.h"
 #include "ability.h"
+
+class Mortal;
+class Player;
+struct Card;
+
+namespace Game {
+
+    void GarbageCollector(Player* first, Player* second);
+
+    void ChangeHpON(Mortal* target, int value);
+
+    void SetHpOn(Mortal* target, int value);
+
+    void ChangeDamageOn(Mortal* target, int value);
+
+    void SetDamageOn(Mortal* target, int value);
+
+    void AddMana(Player* player, int value);
+    
+    enum WhosMove {
+        first,
+        second,
+        idle
+    };
+
+    static WhosMove game_status = WhosMove::idle;
+
+    bool IsGameEnd(Player* first, Player* second);
+
+    void StartGame();
+}
+
+class Mortal {
+    private:
+    int life;
+    size_t damage;
+
+
+    friend void Game::ChangeHpON(Mortal* target, int value);
+    friend void Game::SetHpOn(Mortal* target, int value);
+    friend void Game::ChangeDamageOn(Mortal* target, int value);
+    friend void Game::SetDamageOn(Mortal* target, int value);
+    friend void Game::AddMana(Player* player, int value);
+
+    public:
+    Player* opposite;
+
+    Mortal();
+    Mortal(int life, size_t damage, Player* opposite);
+    Mortal(std::string name, size_t mana_cost, int life, 
+        size_t damage, Ability ability):
+        Mortal(life, damage, nullptr)
+        {}
+    void DealDamage(Mortal* target);
+    
+    bool IsDead();
+    
+    bool IsAbleToAttack = false;
+};
 
 class Player : public Mortal {
     struct Hand {
         std::vector<Card*> cards;
 
-        void push(Card* card) {
-            cards.push_back(card);
-        }
+        Hand();
+        void push(Card* card);
 
-        void RemoveCard(Card* card) {
-            for(auto it : deck) {
-                if(&(*it) == card) {
-                    deck.erase(it);
-                    break;
-                }
-            }
-        }
+        void RemoveCard(Card* card);
     };
 
     
-    std::string name;
     size_t mana;
-    Player* opposite;
 
-    friend Game;
+    friend void Game::ChangeHpON(Mortal* target, int value);
+    friend void Game::SetHpOn(Mortal* target, int value);
+    friend void Game::ChangeDamageOn(Mortal* target, int value);
+    friend void Game::SetDamageOn(Mortal* target, int value);
+    friend void Game::AddMana(Player* player, int value);
 
     public:
 
     Hand hand;
     std::vector<Card*> laid_cards;
 
-    Player():
-        // Generation of the Player;
-    {}
+    Player();
+    Player(int hp, size_t damage, Player* opposite, size_t mana);
 
-    bool IsDead const {
-        return life < 1;
-    };
+    bool IsAbleToAttack = true;
 
-    void Move() {
-        Game::GarbageCollector();
-        Interface::Directive directive = Interface::GetDirective(this, opposite);
-        //Attack [executor*] [target*] - attacks a target by executor
-        //deploy [card*] - deploys a card
-        //finish - end the move
-        if(directive.command == Interface::command.attack) {
-            directive.executor->DealDamage(directive.target);
-            Move();
-        } else if(directive.command == Interface::Command.deploy) {
-            Card* card = reinterpret_cast<Card*>(directive.card)->mana_cost;
-            mana -= card->mana_cost;
-            if(card->card_type == CardType.monster) {
-                laid_cards.push_back(reinterpret_cast<MonsterCard*>(directive.card));
-            }
-            hand.RemoveCard(reinterpret_cast<MonsterCard*>(directive.card));
-            reinterpret_cast<MonsterCard*>(directive.card)->ExecuteAbility();
-            Move();
-        } else {
-            return;
-        }
-        
-    }
+    void Move();
 };
