@@ -15,6 +15,10 @@ Mortal::Mortal(int life, size_t damage, Player* opposite = nullptr):
     opposite(opposite)
 {}
 
+int Mortal::ShowHP() {
+    return life;
+}
+
 void Mortal::DealDamage(Mortal* target) {
     Game::ChangeHpON(target, -damage);
 }
@@ -52,6 +56,7 @@ void Player::Move() {
     //Attack [executor*] [target*] - attacks a target by executor
     //deploy [card*] - deploys a card
     //finish - end the move
+    Game::ShowGame(this, opposite);
     if(directive.command == Command::attack) {
         if(directive.executor->IsAbleToAttack && 
             directive.executor->opposite != directive.target->opposite) {
@@ -60,15 +65,23 @@ void Player::Move() {
             Interface::Echo("Deployed or not your card cant fight");
         }    
         Move();
+        return;
     } else if(directive.command == Command::deploy) {
         Card* card = reinterpret_cast<Card*>(directive.card);
         mana -= card->mana_cost;
+        if(mana < 0) {
+            mana += card->mana_cost;
+            Interface::Echo("Not enough mana");
+            Move();
+            return;
+        }
         if(card->card_type == CardType::monster) {
             laid_cards.push_back(reinterpret_cast<MonsterCard*>(directive.card));
         }
         hand.RemoveCard(reinterpret_cast<MonsterCard*>(directive.card));
         reinterpret_cast<MonsterCard*>(directive.card)->ExecuteAbility();
         Move();
+        return;
     } else {
         return;
     }
@@ -89,6 +102,12 @@ void Game::GarbageCollector(Player* first, Player* second) {
     }
 }
 
+void Game::ShowGame(Player* first, Player* second) {
+    std::string f_hp = std::__cxx11::to_string(first->ShowHP());
+    Interface::Echo("[FIRST] HP = " + f_hp);
+    std::string s_hp = std::__cxx11::to_string(second->ShowHP());
+    Interface::Echo("[SECOND] HP = " + s_hp);
+}
 
 void Game::ChangeHpON(Mortal* target, int value) {
     target->life += value;
@@ -118,11 +137,13 @@ void Game::StartGame() {
     static Player first;
     static Player second(30, 1, &first, 1);
     first = Player(30, 1, &second, 1);
+    std::cerr << "Created players\n";
     Deck deck;
+    std::cerr << "Deck created\n";
     Player* current_player = &first;
     Player* next_player = &second; 
     Interface::Echo("Welcome to Физтех.Stone.");
-    while(IsGameEnd(&first, &second)) {
+    while(!IsGameEnd(&first, &second)) {
         switch(game_status) {
             case WhosMove::idle:
                 Interface::Echo("First player moves.");
