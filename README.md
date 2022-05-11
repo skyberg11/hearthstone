@@ -8,6 +8,7 @@
 mkdir build/ && cd build/
 cmake ..
 make
+cd src
 ./project
 ```
 
@@ -28,6 +29,6 @@ https://docs.google.com/document/d/1OFr1lBNB8nX5dye98dLrJ3lrF7pRCa6lxNqJlx9oYio
      * Exception safety (easy)
      * ~~Придумать язык (easy)~~
      * ~~Получить адрес карты/героя (easy)~~
- * ~~Реализовать автокаст абилок (easy, required) ~~
+ * ~~Реализовать автокаст абилок (easy, required)~~
  * ~~Реализовать bot (very hard, not required)~~
  * ~~Нарисовать UML диаграмму классов (medium, required)~~
