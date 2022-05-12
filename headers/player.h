@@ -9,6 +9,8 @@ struct Card;
 
 namespace Game {
 
+    void ShowGame(Player* first, Player* second);
+
     void GarbageCollector(Player* first, Player* second);
 
     void ChangeHpON(Mortal* target, int value);
@@ -57,6 +59,8 @@ class Mortal {
         {}
     void DealDamage(Mortal* target);
     
+    int ShowHP();
+
     bool IsDead();
     
     bool IsAbleToAttack = false;

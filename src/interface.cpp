@@ -12,6 +12,8 @@ Directive Interface::GetDirective(Player* ally, Player* opposite) {
     //Attack [hero;1;2;3;4...] [hero;1;2;3;4;5...]
     std::string command;
     std::cin >> command;
+    std::cerr << command;
+    throw std::exception();
     if(command == "attack") {
             std::string exec, target;
             std::cin >> exec >> target;
